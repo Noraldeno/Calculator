@@ -75,7 +75,7 @@ public class Main extends Application {
 			Scene scene = new Scene(root,300,250);
 			
 			//Set name to Calculator
-			primaryStage.setTitle("Calculator 0.1");
+			primaryStage.setTitle("Calculator 0.21");
 			
 			// Set scene to Stage
 			primaryStage.setScene(scene);
