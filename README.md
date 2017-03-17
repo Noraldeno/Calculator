@@ -1,3 +1,3 @@
 # Calculator
 
-![Alt text](Calculator/Calculator.JPG?raw=true)
+![ScreenShot](https://raw.github.com/Noraldeno/Calculator/Calculator.JPG)
