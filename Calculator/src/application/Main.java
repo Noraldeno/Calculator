@@ -75,7 +75,7 @@ public class Main extends Application {
 			Scene scene = new Scene(root,300,250);
 			
 			//Set name to Calculator
-			primaryStage.setTitle("Calculator 1.0");
+			primaryStage.setTitle("Calculator 0.1");
 			
 			// Set scene to Stage
 			primaryStage.setScene(scene);
@@ -131,44 +131,51 @@ public class Main extends Application {
 			answer.setText("Answer");
 			txtnum1.requestFocus();
 		}
+		
 		else if ((txtnum1.getText() != null && !txtnum1.getText().isEmpty())
 				&& (txtnum2.getText() != null && !txtnum2.getText().isEmpty())){
 			
 			Calculate calc = new Calculate(0 , 0);
 			
+			boolean nan = false;
 			// Take in text from text fields
 			try{
 				calc = new Calculate(Integer.parseInt(txtnum1.getText()), Integer.parseInt(txtnum2.getText()));
 			}
 			catch (NumberFormatException nfe){
+				nan = true;
+			}
+			
+			if (!nan){
+				// Add the addends to find the sum
+				if(e.getSource() == btnadd){
+					calc.add();
+				}
+				
+				// Subtract the subtrahend and minuend to find the difference
+				else if(e.getSource() == btnsub){
+					calc.subtract();
+				}
+				
+				// Multiply the factors to get the product
+				else if(e.getSource() == btnmul){
+					calc.multiply();
+				}
+				
+				// Divide the dividend with the divisor to get the quotient
+				else{
+					calc.divide();
+				}
+				// Change the label to the answer calculated
+				answer.setText(calc.toString());
+			}
+			
+			else{
 				answer.setText("Not a number");
 			}
-			
-			// Add the addends to find the sum
-			if(e.getSource() == btnadd){
-				calc.add();
-			}
-			
-			// Subtract the subtrahend and minuend to find the difference
-			else if(e.getSource() == btnsub){
-				calc.subtract();
-			}
-			
-			// Multiply the factors to get the product
-			else if(e.getSource() == btnmul){
-				calc.multiply();
-			}
-			
-			// Divide the dividend with the divisor to get the quotient
-			else{
-				calc.divide();
-			}
-			
-			// Change the label to the answer calculated
-			answer.setText(calc.toString());
 		}
 		else{
-			answer.setText("Please enter num");
+			answer.setText("Please enter number");
 		}
 	}
 	
